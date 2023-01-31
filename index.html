@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>Calculator</h2>
+        <div>
+            <input type="text" id="input">
+            <button id="calculate" onclick = "calculate()">Calculate</button>
+        </div>
+        <div>
+            <div>
+                <button class="btn button-value">1</button>
+                <button class="btn button-value">2</button>
+                <button class="btn button-value">3</button>
+                <button class="btn button-value">/</button>
+            </div>
+            <div>
+                <button class="btn button-value">4</button>
+                <button class="btn button-value btn-active">5</button>
+                <button class="btn button-value">6</button>
+                <button class="btn button-value">/</button>
+            </div>
+            <div>
+                <button class="btn button-value">7</button>
+                <button class="btn button-value">8</button>
+                <button class="btn button-value">9</button>
+                <button class="btn button-value"> = </button>
+            </div>
+            <div>
+                <button class="btn button-value"> - </button>
+                <button class="btn button-value">0</button>
+                <button class="btn button-value">+</button>
+                <button class="btn button-value">*</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let input = document.getElementById("input");
+
+        var buttons = document.querySelectorAll(".button-value");
+        buttons.forEach(ele => {
+            ele.addEventListener("click", getValue);
+        })
+
+        let buttonValue = 1;
+        let totalValue = 1;
+
+        function getValue(e){
+            e.preventDefault();
+            buttons.forEach(btn =>{
+                // clear the state
+                btn.classList.remove("btn-active");
+
+                // active the state
+                if(e.target.innerHTML === btn.innerHTML){
+                    btn.classList.add(".btn-active");
+                    buttonValue = parseFloat(btn.innerHTML);
+                }
+                console.log(buttonValue);
+            })
+        }
+
+        function calculate (){
+            console.log("button is clicked");
+            
+        }
+        calculate();
+
+    </script>
+</body>
+</html>
